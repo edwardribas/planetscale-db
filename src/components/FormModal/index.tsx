@@ -60,16 +60,18 @@ export const FormModal = ({
 			description
 		] = inputNames.map(item => formData.get(item)?.valueOf().toString().trim());
 
-		const data = {
-			name: String(name),
-			country: String(country),
-			wage: +Number(String(wage)).toFixed(2) || 0,
-			description: description || null
-		};
-
 		setShowFormModal(false);
-		await addJob(data);
+		if (!name || !country || !wage) return;
+		
+		await addJob({
+			name: name,
+			country: country,
+			wage: +Number(wage).toFixed(2),
+			description: description || null
+		});
+
 		formRef.current?.reset();
+
 	}
 
 	return (

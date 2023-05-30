@@ -1,8 +1,10 @@
+import { Decimal } from "@prisma/client/runtime";
+
 export interface JobWrapperProps {
 	id: number;
 	name: string;
 	country: string;
-	wage: number;
+	wage: Decimal;
 	description: string | null;
 	createdAt: Date;
 }

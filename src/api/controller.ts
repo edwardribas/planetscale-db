@@ -1,6 +1,6 @@
 "use server";
 
-import { prisma } from "@/database";
+import { prisma } from "@/api/database";
 import { revalidatePath } from "next/cache";
 import { AddJobInterface, UpdateJobInterface } from "./models";
 
