@@ -12,7 +12,7 @@ model Jobs {
   id          Int      @id @default(autoincrement())
   name        String
   country     String
-  wage        Int
+  wage        Decimal  @db.Decimal(10, 2)
   description String?  @db.VarChar(255)
   createdAt   DateTime @default(now())
 }

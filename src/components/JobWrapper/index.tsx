@@ -2,7 +2,7 @@
 
 import { deleteJob } from '@/api/controller';
 import styles from './JobWrapper.module.scss';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { JobWrapperProps } from './JobWrapper.types';
 
 export const JobWrapper = ({
@@ -15,7 +15,7 @@ export const JobWrapper = ({
 }: JobWrapperProps) => {
 	const [isDeleting, setIsDeleting] = useState(false);
 
-	const formattedWage = wage.toLocaleString('pt-br', {
+	const formattedWage = parseFloat(String(wage)).toLocaleString('pt-br', {
 		style: "currency",
 		currency: "USD",
 	})

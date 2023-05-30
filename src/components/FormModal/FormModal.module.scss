@@ -1,29 +1,116 @@
 .modal {
     width: 100%;
     max-width: 350px;
-    background-color: white;
+    background-color: rgb(11, 11, 11);
+    border: 1px solid #313131;
+    padding: 1.75rem;
+    border-radius: 12px;
 
-    &.active {
-        + .backdrop {
+    h2 {
+        margin-bottom: 2rem;
+        font-size: 1.5rem;
+    }
 
+    form {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+
+        fieldset {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            border: none;
+
+            label {
+                font-weight: 700;
+                letter-spacing: 2.5px;
+                text-transform: uppercase;
+                font-size: .75rem;
+                color: rgb(240, 240, 240);
+            }
+
+            input, textarea {
+                border-radius: 12px;
+                font-size: .95rem;
+                background-color: transparent;
+                border: 1px solid rgba(155, 155, 155, 0.281);
+                padding: 12px 16px;
+                resize: none;
+                color: rgb(235, 235, 235);
+
+                &::-webkit-outer-spin-button, &::-webkit-inner-spin-button {
+                    appearance: none;
+                }
+            }
+
+            textarea {
+                height: 120px;
+            }
+        }
+
+        .buttons {
+            display: flex;
+            flex-direction: row;
+            margin-top: 1.5rem;
+
+            button {
+                flex: 1;
+                width: 100%;
+                max-width: 140px;
+                padding: 9px 16px;
+                border-radius: 9px;
+                outline: none;
+                background-color: #fff;
+                color: rgb(13, 13, 13);
+                cursor: pointer;
+                border: none;
+                user-select: none;
+                font-size: 1rem;
+                font-weight: 400;
+                transition: transform .2s ease-out, background-color .2s ease-out;
+                
+                &:active {
+                    background-color: #d3d3d3;
+                }
+
+                &:nth-of-type(2) {
+                    background-color: transparent;
+                    color: #fff;
+
+                    &:hover {
+                        background-color: #3131315d;
+                    }
+
+                    &:active {
+                        background-color: #3131319d;
+                    }
+                }
+            }
         }
     }
 }
+
 .backdrop {
-    overflow-y: scroll;
+    position: fixed;
     z-index: 15;
-    padding: 1rem 2.5rem;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(10px);
+    inset: 0;
+    
     display: grid;
     place-items: center;
     min-height: 100vh;
     height: 100%;
-    position: fixed;
-    inset: 0;
-    background-color: rgba(0, 0, 0, 0.432);
-    backdrop-filter: blur(7px);
+    padding: 1rem 2.5rem;
+    
+    overflow-y: scroll;
+    background-color: rgba(0, 0, 0, 0.692);
+    backdrop-filter: blur(12px);
+    
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    
     transition:
         opacity .2s ease-out,
         visibility .2s ease-out,
