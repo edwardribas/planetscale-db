@@ -2,14 +2,20 @@
 
 import { addJob } from "@/api/controller";
 import styles from './FormModal.module.scss';
-import { useModalActiveContext } from "@/contexts/ModalActiveContext";
+import { FormModalProps } from "./FormModal.types";
 
-export const FormModal = () => {
-	const { setShowFormModal, showFormModal} = useModalActiveContext();
+export const FormModal = ({
+	showFormModal,
+	setShowFormModal,
+}: FormModalProps) => {
+
+	const backdropClassName = !showFormModal
+		? styles.backdrop
+		: `${styles.backdrop} ${styles.active}`;
 
 	return (
-		<div className={styles.backdrop}>
-			<div className={showFormModal ? `${styles.active} ${styles.modal}` : styles.modal}>
+		<div className={backdropClassName}>
+			<div className={styles.modal}>
 				<form action={addJob}>
 					<fieldset>
 						<label htmlFor="jobName">Job's title</label>

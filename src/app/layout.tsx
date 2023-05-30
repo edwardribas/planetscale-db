@@ -1,4 +1,3 @@
-import { ModalActiveProvider } from '@/contexts/ModalActiveContext';
 import './globals.scss'
 import { Outfit } from 'next/font/google'
 
@@ -22,9 +21,7 @@ export default function RootLayout({
 	return (
 		<html lang="pt-br">
 			<body className={outfit.className}>
-				<ModalActiveProvider>
-					{children}
-				</ModalActiveProvider>
+				{children}
 			</body>
 		</html>
 	)

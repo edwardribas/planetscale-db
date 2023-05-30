@@ -48,5 +48,10 @@
         user-select: none;
         font-size: 1rem;
         font-weight: 400;
+        transition: transform .2s ease-out;
+
+        &:active {
+            transform: translateY(2px);
+        }
     }
 }

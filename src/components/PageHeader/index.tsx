@@ -1,13 +1,13 @@
 "use client";
 
-import { useModalActiveContext } from "@/contexts/ModalActiveContext"
 import { CgDatabase } from "react-icons/cg"
 import { FormModal } from "../FormModal"
 import styles from './PageHeader.module.scss';
+import { useEffect, useState } from "react";
 
 export const PageHeader = () => {
-	const { setShowFormModal, showFormModal} = useModalActiveContext()
-	
+	const [showFormModal, setShowFormModal] = useState(false);
+
 	return (
 		<>
 			<header className={styles.header}>
@@ -19,13 +19,16 @@ export const PageHeader = () => {
 				</div>
 
 				<button
-					onClick={() => setShowFormModal(true)}
+					onClick={() => setShowFormModal(!showFormModal)}
 				>
 					New offer
 				</button>
 			</header>
 
-			<FormModal/>
+			<FormModal
+				showFormModal={showFormModal}
+				setShowFormModal={setShowFormModal}
+			/>
 		</>
 	)
 }
