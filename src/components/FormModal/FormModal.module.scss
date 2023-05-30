@@ -1,0 +1,37 @@
+.modal {
+    width: 100%;
+    max-width: 350px;
+    background-color: white;
+
+    &.active {
+        + .backdrop {
+
+        }
+    }
+}
+.backdrop {
+    overflow-y: scroll;
+    z-index: 15;
+    padding: 1rem 2.5rem;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+    height: 100%;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.432);
+    backdrop-filter: blur(7px);
+    transition:
+        opacity .2s ease-out,
+        visibility .2s ease-out,
+        transform .2s ease-out;
+    
+    &.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+}

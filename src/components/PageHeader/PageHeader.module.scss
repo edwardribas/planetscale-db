@@ -1,0 +1,52 @@
+.header {
+    background-color: rgba(13, 13, 13, 0.274);
+    backdrop-filter: blur(8px);;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding: 2rem 0;
+    border-bottom: 1px solid #2b2b2b;
+    gap: 1.35rem;
+
+    .title {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+
+        span {
+            width: 35px;
+            min-width: 35px;
+            height: 35px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            color: black;
+            font-size: 1.2rem;
+            background-color: rgb(231, 231, 231);
+        }
+        
+        h2 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: rgb(231, 231, 231);
+        }
+    }
+
+    button {
+        width: 100%;
+        max-width: 140px;
+        padding: 9px 16px;
+        border-radius: 9px;
+        outline: none;
+        background-color: #fff;
+        color: rgb(13, 13, 13);
+        border: 1px solid #fff;
+        cursor: pointer;
+        user-select: none;
+        font-size: 1rem;
+        font-weight: 400;
+    }
+}
