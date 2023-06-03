@@ -20,6 +20,7 @@ export const getJobs = () => {
 export const updateJob = async (updateData: UpdateJobInterface) => {
     const { id, data } = updateData;
     const res = await prisma.jobs.update({ where: { id }, data });
+    revalidatePath('/home');
     return res;
 }
 

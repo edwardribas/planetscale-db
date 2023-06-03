@@ -1,3 +1,4 @@
+import { ModalContextProvider } from '@/contexts/ModalContext';
 import './globals.scss'
 import { Outfit } from 'next/font/google'
 
@@ -21,7 +22,9 @@ export default function RootLayout({
 	return (
 		<html lang="pt-br">
 			<body className={outfit.className}>
-				{children}
+				<ModalContextProvider>
+					{children}
+				</ModalContextProvider>
 			</body>
 		</html>
 	)

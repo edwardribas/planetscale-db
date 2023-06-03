@@ -2,28 +2,42 @@
 
 import { deleteJob } from '@/api/controller';
 import styles from './JobWrapper.module.scss';
-import { useEffect, useState } from 'react';
-import { JobWrapperProps } from './JobWrapper.types';
+import { useContext, useState } from 'react';
+import { Jobs } from '@prisma/client';
+import { ModalContext } from '@/contexts/ModalContext';
 
 export const JobWrapper = ({
 	country,
 	createdAt,
+	updatedAt,
 	description,
 	name,
 	wage,
 	id,
-}: JobWrapperProps) => {
+}: Jobs) => {
 	const [isDeleting, setIsDeleting] = useState(false);
+	const isRoleUpdated = new Date(createdAt).toISOString() !== new Date(updatedAt).toISOString();
+	const { modalContextInfo, setModalContextInfo } = useContext(ModalContext);
 
 	const formattedWage = parseFloat(String(wage)).toLocaleString('pt-br', {
 		style: "currency",
 		currency: "USD",
 	})
 
-	const formattedDate = createdAt.toLocaleDateString('en-us', {
+	const formattedCreatedAt = createdAt.toLocaleDateString('en-us', {
 		month: 'long',
 		day: "2-digit",
 		year: "numeric",
+		hour: "numeric",
+		minute: "numeric"
+	})
+
+	const formattedUpdatedAt = updatedAt.toLocaleDateString('en-us', {
+		month: 'long',
+		day: "2-digit",
+		year: "numeric",
+		hour: "numeric",
+		minute: "numeric"
 	})
 
 	const handleDeleteJob = async () => {
@@ -37,7 +51,14 @@ export const JobWrapper = ({
 
 			<div className={styles.info_label}>
 				<b>{country}</b> {" "}
-				<span>{formattedDate}</span>
+				
+				<span>
+					Created at {formattedCreatedAt}
+				</span>
+				
+				{isRoleUpdated && 
+					<span>Updated at {formattedUpdatedAt}</span>
+				}
 			</div>
 
 
@@ -53,7 +74,14 @@ export const JobWrapper = ({
 			
 			
 			<div className={styles.buttons}>
-				<button>
+				<button onClick={() => setModalContextInfo({
+					active: !modalContextInfo.active && true,
+					mode: !modalContextInfo.active ? "edit" : modalContextInfo.mode,
+					currentData: {
+						id: id,
+						data: { country, description, name, wage, }
+					}
+				})}>
 					Edit
 				</button>
 				<button onClick={handleDeleteJob}>

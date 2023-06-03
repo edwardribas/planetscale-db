@@ -1,13 +1,7 @@
-import { Dispatch, HTMLInputTypeAttribute, SetStateAction } from "react";
-
-export interface FormModalProps {
-    showFormModal: boolean;
-    setShowFormModal: Dispatch<SetStateAction<boolean>>;
-}
-
 export interface InputBoxProps {
     label: string;
     name: string;
+    defaultValue?: string | number | null;
     type: "text" | "number" | "textarea";
     placeholder: string;
     maxLength?: number;

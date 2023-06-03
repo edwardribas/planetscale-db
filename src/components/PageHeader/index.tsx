@@ -3,10 +3,11 @@
 import { CgDatabase } from "react-icons/cg"
 import { FormModal } from "../FormModal"
 import styles from './PageHeader.module.scss';
-import { useEffect, useState } from "react";
+import { useContext } from "react";
+import { ModalContext } from "@/contexts/ModalContext";
 
 export const PageHeader = () => {
-	const [showFormModal, setShowFormModal] = useState(false);
+	const { modalContextInfo, setModalContextInfo } = useContext(ModalContext);
 
 	return (
 		<>
@@ -19,16 +20,16 @@ export const PageHeader = () => {
 				</div>
 
 				<button
-					onClick={() => setShowFormModal(!showFormModal)}
+					onClick={() => setModalContextInfo({
+						active: !modalContextInfo.active && true,
+					mode: !modalContextInfo.active ? "add" : modalContextInfo.mode,
+					})}
 				>
 					New offer
 				</button>
 			</header>
 
-			<FormModal
-				showFormModal={showFormModal}
-				setShowFormModal={setShowFormModal}
-			/>
+			<FormModal/>
 		</>
 	)
 }

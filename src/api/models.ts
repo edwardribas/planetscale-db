@@ -7,10 +7,5 @@ export interface AddJobInterface {
 
 export interface UpdateJobInterface {
     id: number;
-    data: {
-        name?: string;
-        country?: string;
-        wage?: number;
-        description?: string;
-    }
+    data: AddJobInterface;
 }
